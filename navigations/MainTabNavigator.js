@@ -1,48 +1,58 @@
-import React, { Component } from 'react';
-import { createBottomTabNavigator, createAppContainer } from 'react-navigation';
-import { Ionicons } from '@expo/vector-icons';
+import React from 'react';
+import { Platform } from 'react-native';
+import { createStackNavigator, createBottomTabNavigator } from 'react-navigation';
+
+import TabBarIcon from '../components/TabBarIcon';
 import DeckListScreen from '../screens/DeckListScreen';
 import NewDeckScreen from '../screens/NewDeckScreen';
+import DeckScreen from '../screens/DeckScreen';
 
-const Tabs = createBottomTabNavigator(
-  {
-    DeckList: {
-      screen: DeckListScreen,
-      navigationOptions: () => ({
-        title: `Decks`
-      })
-    },
-    NewDeck: {
-      screen: NewDeckScreen,
-      navigationOptions: () => ({
-        title: `Add Deck`
-      })
-    }
-  },
-  {
-    defaultNavigationOptions: ({ navigation }) => ({
-      title: 'titleName',
-      tabBarIcon: ({ focused, horizontal, tintColor }) => {
-        const { routeName } = navigation.state;
-        let iconName;
-        if (routeName === 'DeckList') {
-          iconName = `ios-apps`;
-        } else if (routeName === 'NewDeck') {
-          iconName = `md-add-circle${focused ? '' : '-outline'}`;
-        }
+const DeckListStack = createStackNavigator({
+  DeckList: DeckListScreen
+});
 
-        // You can return any component that you like here! We usually use an
-        // icon component from react-native-vector-icons
-        return <Ionicons name={iconName} size={horizontal ? 20 : 25} color={tintColor} />;
+DeckListStack.navigationOptions = {
+  tabBarLabel: 'Decks',
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon
+      focused={focused}
+      name={
+        Platform.OS === 'ios'
+          ? `ios-information-circle${focused ? '' : '-outline'}`
+          : 'md-information-circle'
       }
-    }),
-    tabBarOptions: {
-      activeTintColor: 'tomato',
-      inactiveTintColor: 'gray'
-    }
-  }
-);
+    />
+  )
+};
 
-const TabsContainer = createAppContainer(Tabs);
+const NewDeckStack = createStackNavigator({
+  NewDeck: NewDeckScreen,
+  Deck: DeckScreen
+});
 
-export default TabsContainer;
+NewDeckStack.navigationOptions = {
+  tabBarLabel: 'Add Deck',
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-link' : 'md-link'} />
+  )
+};
+
+// const SettingsStack = createStackNavigator({
+//   Settings: SettingsScreen,
+// });
+
+// SettingsStack.navigationOptions = {
+//   tabBarLabel: 'Settings',
+//   tabBarIcon: ({ focused }) => (
+//     <TabBarIcon
+//       focused={focused}
+//       name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'}
+//     />
+//   ),
+// };
+
+export default createBottomTabNavigator({
+  DeckListStack,
+  NewDeckStack
+  //   SettingsStack,
+});
