@@ -6,9 +6,12 @@ import TabBarIcon from '../components/TabBarIcon';
 import DeckListScreen from '../screens/DeckListScreen';
 import NewDeckScreen from '../screens/NewDeckScreen';
 import DeckScreen from '../screens/DeckScreen';
+import NewQuestionScreen from '../screens/NewQuestionScreen';
 
 const DeckListStack = createStackNavigator({
-  DeckList: DeckListScreen
+  DeckList: DeckListScreen,
+  Deck: DeckScreen,
+  NewQuestion: NewQuestionScreen // add card
 });
 
 DeckListStack.navigationOptions = {
@@ -26,8 +29,7 @@ DeckListStack.navigationOptions = {
 };
 
 const NewDeckStack = createStackNavigator({
-  NewDeck: NewDeckScreen,
-  Deck: DeckScreen
+  NewDeck: NewDeckScreen
 });
 
 NewDeckStack.navigationOptions = {

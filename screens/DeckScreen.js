@@ -22,7 +22,10 @@ class DeckScreen extends Component {
             <H3 style={{ margin: 10 }}>2 cards</H3>
           </View>
           <View>
-            <TouchableOpacity style={styles.button} onPress={() => alert('Add Card')}>
+            <TouchableOpacity
+              style={styles.button}
+              onPress={() => this.props.navigation.navigate('NewQuestion')}
+            >
               <Text style={styles.text}>Add Card</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.button} onPress={() => alert('Start Quiz')}>
