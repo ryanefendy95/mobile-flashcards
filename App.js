@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { createBottomTabNavigator, createAppContainer } from 'react-navigation';
+import TabsContainer from './navigations/MainTabNavigator';
 
 export default class App extends React.Component {
   async componentWillMount() {
@@ -14,29 +14,6 @@ export default class App extends React.Component {
     return <TabsContainer />;
   }
 }
-
-const Hello = () => (
-  <View>
-    <Text>Hello!</Text>
-  </View>
-);
-
-const Goodbye = () => (
-  <View>
-    <Text>Goodbye!</Text>
-  </View>
-);
-
-const Tabs = createBottomTabNavigator({
-  Hello: {
-    screen: Hello
-  },
-  Goodbye: {
-    screen: Goodbye
-  }
-});
-
-const TabsContainer = createAppContainer(Tabs);
 
 const styles = StyleSheet.create({
   container: {
