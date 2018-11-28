@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, TouchableHighlight, Text, TouchableOpacity } from 'react-native';
-import { Container, Item, Input, Content, Form, Label } from 'native-base';
-import { Ionicons } from '@expo/vector-icons';
+import { StyleSheet, Text, TouchableOpacity } from 'react-native';
+import { Container, Item, Input, Content, Form } from 'native-base';
 
 // eslint-disable-next-line react/prefer-stateless-function
 class NewQuestionScreen extends Component {
   static navigationOptions = {
-    title: 'Add Card',
+    title: 'New Card',
     headerStyle: {
       backgroundColor: '#f4511e'
     },
@@ -64,4 +63,5 @@ const styles = StyleSheet.create({
     color: 'white'
   }
 });
+
 export default NewQuestionScreen;

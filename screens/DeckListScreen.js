@@ -3,6 +3,17 @@ import { Container, Header, Content, List, ListItem, Text, Left, Right } from 'n
 import { Ionicons } from '@expo/vector-icons';
 
 class DeckListScreen extends Component {
+  static navigationOptions = {
+    title: 'Deck List',
+    headerStyle: {
+      backgroundColor: '#f4511e'
+    },
+    headerTintColor: '#fff',
+    headerTitleStyle: {
+      fontWeight: 'bold'
+    }
+  };
+
   render() {
     return (
       <Container>

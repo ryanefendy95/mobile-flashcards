@@ -5,6 +5,17 @@ import { Ionicons } from '@expo/vector-icons';
 
 // eslint-disable-next-line react/prefer-stateless-function
 class DeckScreen extends Component {
+  static navigationOptions = {
+    title: 'Deck 1',
+    headerStyle: {
+      backgroundColor: '#f4511e'
+    },
+    headerTintColor: '#fff',
+    headerTitleStyle: {
+      fontWeight: 'bold'
+    }
+  };
+
   render() {
     return (
       <Container>
