@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import { Platform, StatusBar, StyleSheet, View } from 'react-native';
 import { AppLoading, Asset, Font, Icon } from 'expo';
 import AppNavigator from './navigations/AppNavigator';
-// import './utils/ReactotronConfig';
+import './utils/ReactotronConfig';
 
 export default class App extends Component {
-  // componentDidMount() {
-  //   Reactotron.connect();
-  // }
+  componentDidMount() {
+    console.tron.log('Hello from Reactotron');
+  }
 
   state = {
     isLoadingComplete: false
