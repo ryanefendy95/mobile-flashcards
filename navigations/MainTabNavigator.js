@@ -7,11 +7,13 @@ import DeckListScreen from '../screens/DeckListScreen';
 import NewDeckScreen from '../screens/NewDeckScreen';
 import DeckScreen from '../screens/DeckScreen';
 import NewQuestionScreen from '../screens/NewQuestionScreen';
+import QuizScreen from '../screens/QuizScreen';
 
 const DeckListStack = createStackNavigator({
   DeckList: DeckListScreen,
   Deck: DeckScreen,
-  NewQuestion: NewQuestionScreen // add card
+  NewQuestion: NewQuestionScreen, // add card
+  Quiz: QuizScreen
 });
 
 DeckListStack.navigationOptions = {

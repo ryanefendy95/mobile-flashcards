@@ -39,7 +39,10 @@ class DeckScreen extends Component {
             >
               <Text style={styles.text}>Add Card</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.button} onPress={() => alert('Start Quiz')}>
+            <TouchableOpacity
+              style={styles.button}
+              onPress={() => this.props.navigation.navigate('Quiz')}
+            >
               <Text style={styles.text}>Start Quiz</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.button} onPress={() => alert('Delete Deck')}>
@@ -86,7 +89,7 @@ const styles = StyleSheet.create({
   },
   button: {
     backgroundColor: '#E53224',
-    padding: 10,
+    padding: 15,
     paddingLeft: 50,
     paddingRight: 50,
     justifyContent: 'center',
@@ -98,4 +101,5 @@ const styles = StyleSheet.create({
     color: 'white'
   }
 });
+
 export default DeckScreen;
