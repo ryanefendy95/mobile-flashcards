@@ -38,7 +38,7 @@
 
 ## Data
 
-- [ ] use AsyncStorage to store decks and flashcards
+- [x] use AsyncStorage to store decks and flashcards
 
 ## Specific Requirements
 
