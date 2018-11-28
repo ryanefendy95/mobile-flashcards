@@ -10,10 +10,10 @@ import NewQuestionScreen from '../screens/NewQuestionScreen';
 import QuizScreen from '../screens/QuizScreen';
 
 const DeckListStack = createStackNavigator({
-  Quiz: QuizScreen,
   DeckList: DeckListScreen,
   Deck: DeckScreen,
-  NewQuestion: NewQuestionScreen // add card
+  NewQuestion: NewQuestionScreen, // add card
+  Quiz: QuizScreen
 });
 
 DeckListStack.navigationOptions = {
