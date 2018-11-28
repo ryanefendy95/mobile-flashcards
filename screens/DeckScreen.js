@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, TouchableHighlight, Text, TouchableOpacity } from 'react-native';
-import { Container, Header, Title, Content, Button, Left, Right, Body, H1, H3 } from 'native-base';
-import { Ionicons } from '@expo/vector-icons';
+import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
+import { Container, H1, H3 } from 'native-base';
 
-// eslint-disable-next-line react/prefer-stateless-function
 class DeckScreen extends Component {
   static navigationOptions = {
     title: 'Deck 1',
