@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 import { Container, H1, H3 } from 'native-base';
+import { getDeck } from '../utils/storage';
 
 class QuizScreen extends Component {
   static navigationOptions = {
@@ -15,18 +16,29 @@ class QuizScreen extends Component {
   };
 
   state = {
-    isQuiz: true
+    isQuiz: true,
+    deck: {},
+    questionNum: 1
   };
 
+  async componentDidMount() {
+    const title = this.props.navigation.getParam('title', undefined);
+    const deck = await getDeck(title);
+    this.setState({ deck });
+  }
+
   render() {
+    const len = this.props.navigation.getParam('len', 0);
+    if (!this.state.deck || !Object.keys(this.state.deck).length) {
+      return <Text>Loading</Text>;
+    }
+    const { question, answer } = this.state.deck.questions[this.state.questionNum];
     return (
       <Container>
-        <H3 style={{ padding: 10 }}>2/2</H3>
+        <H3 style={{ padding: 10 }}>{`${this.state.questionNum}/${len}`}</H3>
         <View style={styles.container}>
           <View style={{ margin: 10, alignItems: 'center' }}>
-            <H1 style={{ textAlign: 'center' }}>
-              {this.state.isQuiz ? 'Does React Native work with Android?' : 'Yes!'}
-            </H1>
+            <H1 style={{ textAlign: 'center' }}>{this.state.isQuiz ? question : answer}</H1>
           </View>
           <View>
             {this.state.isQuiz ? (

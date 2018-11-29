@@ -33,7 +33,7 @@ class DeckScreen extends Component {
             </TouchableOpacity>
             <TouchableOpacity
               style={styles.button}
-              onPress={() => this.props.navigation.navigate('Quiz')}
+              onPress={() => this.props.navigation.navigate('Quiz', { title, len })}
             >
               <Text style={styles.text}>Start Quiz</Text>
             </TouchableOpacity>
