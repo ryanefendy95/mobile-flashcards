@@ -3,8 +3,8 @@ import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 import { Container, H1, H3 } from 'native-base';
 
 class DeckScreen extends Component {
-  static navigationOptions = {
-    title: 'Deck 1',
+  static navigationOptions = ({ navigation }) => ({
+    title: navigation.getParam('title', 'NO TITLE'),
     headerStyle: {
       backgroundColor: '#f4511e'
     },
@@ -12,21 +12,13 @@ class DeckScreen extends Component {
     headerTitleStyle: {
       fontWeight: 'bold'
     }
-  };
+  });
 
   render() {
     const title = this.props.navigation.getParam('title', 'NO TITLE');
     const len = this.props.navigation.getParam('len', 0);
     return (
       <Container>
-        {/* <Header>
-          <Left />
-          <Body>
-            <Title>Deck 1</Title>
-          </Body>
-          <Right />
-        </Header> */}
-        {/* <Content> */}
         <View style={styles.container}>
           <View>
             <H1 style={{ margin: 10 }}>{title}</H1>
@@ -50,18 +42,8 @@ class DeckScreen extends Component {
             </TouchableOpacity>
           </View>
         </View>
-        {/* </Content> */}
       </Container>
     );
-
-    // return (
-    // <View style={styles.container}>
-    //   <View style={[styles.box]} />
-    //   {/* <View style={[styles.box, { alignSelf: 'flex-end' }]} /> */}
-    //   <View style={[styles.box]} />
-    //   <View style={[styles.box]} />
-    // </View>
-    // );
   }
 }
 
@@ -73,19 +55,6 @@ const styles = StyleSheet.create({
     marginRight: 10,
     alignItems: 'center',
     justifyContent: 'space-around'
-  },
-  boxContainer: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginLeft: 10,
-    marginRight: 10
-  },
-  box: {
-    height: 50,
-    width: 50,
-    backgroundColor: '#E76E63',
-    margin: 10
   },
   button: {
     backgroundColor: '#E53224',
