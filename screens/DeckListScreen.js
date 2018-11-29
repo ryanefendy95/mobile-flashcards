@@ -35,8 +35,14 @@ class DeckListScreen extends Component {
             dataArray={Object.values(this.state.decks)}
             keyExtractor={item => item.title}
             renderRow={row => (
-              <ListItem>
-                <Text>{JSON.stringify(row)}</Text>
+              <ListItem button onPress={() => this.props.navigation.navigate('Deck')}>
+                <Body>
+                  <H3 style={styles.text}>{row.title}</H3>
+                  <Text note>{`${row.questions.length} cards`}</Text>
+                </Body>
+                <Right>
+                  <Ionicons name="ios-arrow-forward" size={20} />
+                </Right>
               </ListItem>
             )}
           />
