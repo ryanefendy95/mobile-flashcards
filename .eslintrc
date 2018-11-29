@@ -13,5 +13,6 @@
   },
   "env": {
     "react-native/react-native": true
-  }
+  },
+  "parser": "babel-eslint"
 }
