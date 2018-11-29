@@ -22,6 +22,7 @@
 - [x] the number of cards left in the quiz
 - [x] Displays the percentage correct once the quiz is complete
 - [ ] buttons functionality
+- [ ] Loading screen
 
 ### New Deck View
 
