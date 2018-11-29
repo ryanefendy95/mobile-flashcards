@@ -15,6 +15,8 @@ class DeckScreen extends Component {
   };
 
   render() {
+    const title = this.props.navigation.getParam('title', 'NO TITLE');
+    const len = this.props.navigation.getParam('len', 0);
     return (
       <Container>
         {/* <Header>
@@ -27,8 +29,8 @@ class DeckScreen extends Component {
         {/* <Content> */}
         <View style={styles.container}>
           <View>
-            <H1 style={{ margin: 10 }}>Deck 1</H1>
-            <H3 style={{ margin: 10 }}>2 cards</H3>
+            <H1 style={{ margin: 10 }}>{title}</H1>
+            <H3 style={{ margin: 10 }}>{`${len} cards`}</H3>
           </View>
           <View>
             <TouchableOpacity

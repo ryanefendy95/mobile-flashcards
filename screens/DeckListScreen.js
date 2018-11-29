@@ -35,7 +35,15 @@ class DeckListScreen extends Component {
             dataArray={Object.values(this.state.decks)}
             keyExtractor={item => item.title}
             renderRow={row => (
-              <ListItem button onPress={() => this.props.navigation.navigate('Deck')}>
+              <ListItem
+                button
+                onPress={() =>
+                  this.props.navigation.navigate('Deck', {
+                    title: row.title,
+                    len: row.questions.length
+                  })
+                }
+              >
                 <Body>
                   <H3 style={styles.text}>{row.title}</H3>
                   <Text note>{`${row.questions.length} cards`}</Text>
