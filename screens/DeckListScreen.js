@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { StyleSheet } from 'react-native';
 import { Container, Body, Content, List, ListItem, Text, Left, Right, H3 } from 'native-base';
 import { Ionicons } from '@expo/vector-icons';
+import { initDeck, getDecks } from '../utils/storage';
 
 class DeckListScreen extends Component {
   static navigationOptions = {
@@ -15,45 +16,30 @@ class DeckListScreen extends Component {
     }
   };
 
+  state = {
+    decks: {}
+  };
+
+  async componentDidMount() {
+    await initDeck();
+    const decks = await getDecks();
+    this.setState({ decks });
+  }
+
   render() {
     return (
       <Container>
         {/* <Header /> */}
         <Content>
-          <List>
-            <ListItem button onPress={() => this.props.navigation.navigate('Deck')}>
-              {/* <Left /> */}
-              <Body>
-                <H3 style={styles.text}>Deck 1</H3>
-                <Text note>3 cards</Text>
-              </Body>
-              <Right>
-                <Ionicons name="ios-arrow-forward" size={20} />
-              </Right>
-            </ListItem>
-
-            <ListItem button onPress={() => this.props.navigation.navigate('Deck')}>
-              {/* <Left /> */}
-              <Body>
-                <H3 style={styles.text}>Deck 1</H3>
-                <Text note>3 cards</Text>
-              </Body>
-              <Right>
-                <Ionicons name="ios-arrow-forward" size={20} />
-              </Right>
-            </ListItem>
-
-            <ListItem button onPress={() => this.props.navigation.navigate('Deck')}>
-              {/* <Left /> */}
-              <Body>
-                <H3 style={styles.text}>Deck 1</H3>
-                <Text note>3 cards</Text>
-              </Body>
-              <Right>
-                <Ionicons name="ios-arrow-forward" size={20} />
-              </Right>
-            </ListItem>
-          </List>
+          <List
+            dataArray={Object.values(this.state.decks)}
+            keyExtractor={item => item.title}
+            renderRow={row => (
+              <ListItem>
+                <Text>{JSON.stringify(row)}</Text>
+              </ListItem>
+            )}
+          />
         </Content>
       </Container>
     );

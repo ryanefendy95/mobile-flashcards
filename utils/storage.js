@@ -1,8 +1,8 @@
 import { AsyncStorage } from 'react-native';
 
-const STORAGE_KEY = 'UdaciFlashcards:decks';
+export const STORAGE_KEY = 'UdaciFlashcards:decks';
 
-const dataStore = {
+const data = {
   React: {
     title: 'React',
     questions: [
@@ -92,4 +92,16 @@ export const removeDeck = async deck => {
   decks[deck] = undefined;
   delete decks[deck];
   AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(decks));
+};
+
+export const initDeck = async () => {
+  let decks;
+  try {
+    decks = await getDecks();
+    if (!decks) {
+      AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+    }
+  } catch (error) {
+    console.tron.logImportant(error);
+  }
 };
