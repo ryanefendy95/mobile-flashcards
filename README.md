@@ -71,8 +71,8 @@
   - [x] Buttons are included to allow the student to mark their guess as 'Correct' or 'Incorrect'
   - [x] The view displays the number of questions remaining.
   - [x] When the last question is answered, a score is displayed. This can be displayed as a percentage of correct answers or just the number of questions answered correctly.
-  - [ ] When the score is displayed, buttons are displayed to either start the quiz over or go back to the Individual Deck view.
-  - [ ] Both the 'Restart Quiz' and 'Back to Deck' buttons route correctly to their respective views.
+  - [x] When the score is displayed, buttons are displayed to either start the quiz over or go back to the Individual Deck view.
+  - [x] Both the 'Restart Quiz' and 'Back to Deck' buttons route correctly to their respective views.
 - [ ] Does the New Deck view work correctly?
 - [ ] Does the user receive a notification at a particular time if they haven't studied that day?
 - [ ] Does the user receive a notification at a particular time if they haven't studiDoes the app function correctly in either Android or iOS?
@@ -83,3 +83,4 @@
 
 - [ ] add emoji 🤩 🤩 🤩
 - [ ] for add new card/question, add validation?
+- [ ] shuffle quiz questions

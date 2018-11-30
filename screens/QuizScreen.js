@@ -57,6 +57,20 @@ class QuizScreen extends Component {
                 {`Score: ${this.state.numOfCorrect}/${this.state.questionNum}`}
               </H1>
             </View>
+            <View>
+              <TouchableOpacity
+                style={[styles.button, { backgroundColor: '#008000' }]}
+                onPress={() => this.setState({ questionNum: 0 })}
+              >
+                <Text style={styles.text}>Restart Quiz</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={[styles.button, { backgroundColor: '#008000' }]}
+                onPress={() => this.props.navigation.pop()}
+              >
+                <Text style={styles.text}>Back to Deck</Text>
+              </TouchableOpacity>
+            </View>
           </View>
         </Container>
       );
