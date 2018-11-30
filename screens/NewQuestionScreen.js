@@ -33,6 +33,7 @@ class NewQuestionScreen extends Component {
     const title = this.props.navigation.getParam('title', 'NO TITLE');
     // console.tron.log(this.state.question, this.state.answer);
     await addCardtoDeck(title, { question: this.state.question, answer: this.state.answer });
+    this.setState({ question: '', answer: '' });
     this.props.navigation.pop();
   };
 

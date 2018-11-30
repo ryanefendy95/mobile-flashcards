@@ -26,6 +26,7 @@ class NewDeckScreen extends Component {
   handlePress = async () => {
     await saveDeckTitle(this.state.title);
     this.props.navigation.navigate('Deck', { title: this.state.title });
+    this.setState({ title: '' });
   };
 
   render() {
