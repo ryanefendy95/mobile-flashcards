@@ -44,8 +44,24 @@ class QuizScreen extends Component {
   render() {
     const len = this.props.navigation.getParam('len', 0);
     if (!this.state.deck || !Object.keys(this.state.deck).length) {
-      return <Text>Loading</Text>;
+      return <Text>Loading</Text>; // todo better loading
     }
+
+    // no more questions
+    if (this.state.questionNum >= this.state.deck.questions.length) {
+      return (
+        <Container>
+          <View style={styles.container}>
+            <View style={{ margin: 10, alignItems: 'center' }}>
+              <H1 style={{ textAlign: 'center' }}>
+                {`Score: ${this.state.numOfCorrect}/${this.state.questionNum}`}
+              </H1>
+            </View>
+          </View>
+        </Container>
+      );
+    }
+
     const { question, answer } = this.state.deck.questions[this.state.questionNum];
     return (
       <Container>

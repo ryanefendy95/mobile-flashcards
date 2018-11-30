@@ -109,10 +109,10 @@ export const removeDeck = async deck => {
 export const initDeck = async () => {
   let decks;
   try {
-    // decks = await getDecks();
-    // if (!decks) {
-    AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(data));
-    // }
+    decks = await getDecks();
+    if (!decks) {
+      AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+    }
   } catch (error) {
     console.tron.logImportant(error);
   }
