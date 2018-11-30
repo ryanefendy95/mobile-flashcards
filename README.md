@@ -55,16 +55,16 @@
 
 - [ ] Is the application easy to install and start?
 - [ ] Does the application include a README with clear installation and launch instructions?
-- [ ] Is the initial view a Deck List view?
-- [ ] Does the Deck List view function correctly?
-- [ ] Does the Individual Deck view display the correct information?
+- [x] Is the initial view a Deck List view?
+- [x] Does the Deck List view function correctly?
+- [x] Does the Individual Deck view display the correct information?
   - [x] The deck title
   - [x] Number of cards in the deck
   - [x] Option to start a quiz for that deck
-  - [ ] Option to add a new question to the deck
-- [ ] Does the Individual Deck view function correctly?
-- [ ] Does the New Question view function correctly?
-- [ ] Does the Quiz View function correctly?
+- [x] Option to add a new question to the deck
+- [x] Does the Individual Deck view function correctly?
+- [x] Does the New Question view function correctly?
+- [x] Does the Quiz View function correctly?
   - [x] The Quiz view starts with a question from the selected deck.
   - [x] The question is displayed, along with a button to show the answer.
   - [x] Pressing the 'Show Answer' button displays the answer.
@@ -82,4 +82,4 @@
 ## Extra Features
 
 - [ ] add emoji 🤩 🤩 🤩
-- [ ] a button to redo after finishng a quiz
+- [ ] for add new card/question, add validation?

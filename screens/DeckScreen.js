@@ -17,12 +17,12 @@ class DeckScreen extends Component {
 
   constructor(props) {
     super(props);
-    this.didBlurSubscription;
     this.state = { deck: {} }; // can this be outside of the constructor?
+    this.willFocus;
   }
 
   componentDidMount() {
-    this.didBlurSubscription = this.props.navigation.addListener('didFocus', () => {
+    this.willFocus = this.props.navigation.addListener('willFocus', () => {
       // console.tron.log('didFocus', payload);
       const title = this.props.navigation.getParam('title', undefined);
       getDeck(title).then(deck => {
@@ -32,7 +32,7 @@ class DeckScreen extends Component {
   }
 
   componentWillUnmount() {
-    this.didBlurSubscription.remove();
+    this.willFocus.remove();
   }
 
   deleteDeck = async () => {

@@ -16,9 +16,15 @@ class DeckListScreen extends Component {
     }
   };
 
-  state = {
-    decks: {}
-  };
+  constructor(props) {
+    super(props);
+    this.state = { decks: {} }; // can this be outside of the constructor?
+    this.willFocus = this.props.navigation.addListener('willFocus', () => {
+      getDecks().then(decks => {
+        this.setState({ decks });
+      });
+    });
+  }
 
   async componentDidMount() {
     await initDeck();
