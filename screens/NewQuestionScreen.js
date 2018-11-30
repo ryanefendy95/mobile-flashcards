@@ -50,7 +50,7 @@ class NewQuestionScreen extends Component {
             </Item>
           </Form>
           <TouchableOpacity style={styles.button} onPress={this.handlePress}>
-            <Text style={styles.text}>Submit</Text>
+            <Text style={styles.text}>Add Card</Text>
           </TouchableOpacity>
         </Content>
       </Container>

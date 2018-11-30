@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { Container, Item, Input, Content, Form, Label, H1 } from 'native-base';
+import { saveDeckTitle } from '../utils/storage';
 
 class NewDeckScreen extends Component {
   static navigationOptions = {
@@ -14,6 +15,19 @@ class NewDeckScreen extends Component {
     }
   };
 
+  state = {
+    title: ''
+  };
+
+  handleTitleChange = title => {
+    this.setState(() => ({ title }));
+  };
+
+  handlePress = async () => {
+    await saveDeckTitle(this.state.title);
+    this.props.navigation.navigate('Deck', { title: this.state.title });
+  };
+
   render() {
     return (
       <Container>
@@ -24,13 +38,10 @@ class NewDeckScreen extends Component {
             </View>
             <Item stackedLabel>
               <Label>Deck Title</Label>
-              <Input />
+              <Input onChangeText={this.handleTitleChange} />
             </Item>
           </Form>
-          <TouchableOpacity
-            style={styles.button}
-            onPress={() => this.props.navigation.navigate('Deck')}
-          >
+          <TouchableOpacity style={styles.button} onPress={this.handlePress}>
             <Text style={styles.text}>Create Deck</Text>
           </TouchableOpacity>
         </Content>

@@ -45,8 +45,7 @@ class DeckListScreen extends Component {
                 button
                 onPress={() =>
                   this.props.navigation.navigate('Deck', {
-                    title: row.title,
-                    len: row.questions.length
+                    title: row.title
                   })
                 }
               >
