@@ -87,7 +87,7 @@ export const addCardtoDeck = async (title, question) => {
   try {
     const decks = JSON.parse(await AsyncStorage.getItem(STORAGE_KEY));
     if (decks[title]) {
-      decks[title].question.push(question);
+      decks[title].questions.push(question);
       AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(decks));
     }
   } catch (error) {
@@ -110,7 +110,7 @@ export const initDeck = async () => {
   let decks;
   try {
     decks = await getDecks();
-    if (!decks) {
+    if (!decks || !Object.keys(decks).length) {
       AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(data));
     }
   } catch (error) {

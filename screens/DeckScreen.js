@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 import { Container, H1, H3 } from 'native-base';
+import { getDeck, removeDeck } from '../utils/storage';
 
 class DeckScreen extends Component {
   static navigationOptions = ({ navigation }) => ({
@@ -14,9 +15,38 @@ class DeckScreen extends Component {
     }
   });
 
+  constructor(props) {
+    super(props);
+    this.didBlurSubscription;
+    this.state = { deck: {} }; // can this be outside of the constructor?
+  }
+
+  componentDidMount() {
+    this.didBlurSubscription = this.props.navigation.addListener('didFocus', () => {
+      // console.tron.log('didFocus', payload);
+      const title = this.props.navigation.getParam('title', undefined);
+      getDeck(title).then(deck => {
+        this.setState({ deck });
+      });
+    });
+  }
+
+  componentWillUnmount() {
+    this.didBlurSubscription.remove();
+  }
+
+  deleteDeck = async () => {
+    await removeDeck(this.state.deck.title);
+    this.props.navigation.pop();
+  };
+
   render() {
-    const title = this.props.navigation.getParam('title', 'NO TITLE');
-    const len = this.props.navigation.getParam('len', 0);
+    if (!this.state.deck || !Object.keys(this.state.deck).length) {
+      return <Text>Loading</Text>; // todo better loading
+    }
+
+    const title = this.state.deck.title;
+    const len = this.state.deck.questions.length;
     return (
       <Container>
         <View style={styles.container}>
@@ -27,7 +57,7 @@ class DeckScreen extends Component {
           <View>
             <TouchableOpacity
               style={styles.button}
-              onPress={() => this.props.navigation.navigate('NewQuestion')}
+              onPress={() => this.props.navigation.navigate('NewQuestion', { title })}
             >
               <Text style={styles.text}>Add Card</Text>
             </TouchableOpacity>
@@ -37,7 +67,7 @@ class DeckScreen extends Component {
             >
               <Text style={styles.text}>Start Quiz</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.button} onPress={() => alert('Delete Deck')}>
+            <TouchableOpacity style={styles.button} onPress={this.deleteDeck}>
               <Text style={styles.text}>Delete Deck</Text>
             </TouchableOpacity>
           </View>

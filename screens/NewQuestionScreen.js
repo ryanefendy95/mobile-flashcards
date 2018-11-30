@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 import { Container, Item, Input, Content, Form } from 'native-base';
+import { addCardtoDeck } from '../utils/storage';
 
 // eslint-disable-next-line react/prefer-stateless-function
 class NewQuestionScreen extends Component {
@@ -15,6 +16,26 @@ class NewQuestionScreen extends Component {
     }
   };
 
+  state = {
+    question: '',
+    answer: ''
+  };
+
+  handleQuestionChange = question => {
+    this.setState(() => ({ question }));
+  };
+
+  handleAnswerChange = answer => {
+    this.setState(() => ({ answer }));
+  };
+
+  handlePress = async () => {
+    const title = this.props.navigation.getParam('title', 'NO TITLE');
+    // console.tron.log(this.state.question, this.state.answer);
+    await addCardtoDeck(title, { question: this.state.question, answer: this.state.answer });
+    this.props.navigation.pop();
+  };
+
   render() {
     return (
       <Container>
@@ -22,16 +43,13 @@ class NewQuestionScreen extends Component {
           <Form>
             <Item fixedLabel>
               {/* <Label>Username</Label> */}
-              <Input placeholder="Question" />
+              <Input placeholder="Question" onChangeText={this.handleQuestionChange} />
             </Item>
             <Item fixedLabel last>
-              <Input placeholder="Answer" />
+              <Input placeholder="Answer" onChangeText={this.handleAnswerChange} />
             </Item>
           </Form>
-          <TouchableOpacity
-            style={styles.button}
-            onPress={() => this.props.navigation.navigate('NewQuestion')}
-          >
+          <TouchableOpacity style={styles.button} onPress={this.handlePress}>
             <Text style={styles.text}>Submit</Text>
           </TouchableOpacity>
         </Content>
