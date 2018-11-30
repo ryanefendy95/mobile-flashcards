@@ -18,7 +18,8 @@ class QuizScreen extends Component {
   state = {
     isQuiz: true,
     deck: {},
-    questionNum: 1
+    questionNum: 0,
+    numOfCorrect: 0
   };
 
   async componentDidMount() {
@@ -26,6 +27,19 @@ class QuizScreen extends Component {
     const deck = await getDeck(title);
     this.setState({ deck });
   }
+
+  isCorrect = () => {
+    this.setState(state => ({
+      numOfCorrect: state.numOfCorrect + 1,
+      questionNum: state.questionNum + 1
+    }));
+  };
+
+  isInorrect = () => {
+    this.setState(state => ({
+      questionNum: state.questionNum + 1
+    }));
+  };
 
   render() {
     const len = this.props.navigation.getParam('len', 0);
@@ -35,7 +49,12 @@ class QuizScreen extends Component {
     const { question, answer } = this.state.deck.questions[this.state.questionNum];
     return (
       <Container>
-        <H3 style={{ padding: 10 }}>{`${this.state.questionNum}/${len}`}</H3>
+        <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between' }}>
+          <H3 style={{ padding: 10 }}>
+            {`Score: ${this.state.numOfCorrect}/${this.state.questionNum}`}
+          </H3>
+          <H3 style={{ padding: 10 }}>{`Question: ${this.state.questionNum + 1}/${len}`}</H3>
+        </View>
         <View style={styles.container}>
           <View style={{ margin: 10, alignItems: 'center' }}>
             <H1 style={{ textAlign: 'center' }}>{this.state.isQuiz ? question : answer}</H1>
@@ -58,13 +77,13 @@ class QuizScreen extends Component {
             )}
             <TouchableOpacity
               style={[styles.button, { backgroundColor: '#008000' }]}
-              onPress={() => alert('Correct')}
+              onPress={this.isCorrect}
             >
               <Text style={styles.text}>Correct</Text>
             </TouchableOpacity>
             <TouchableOpacity
               style={[styles.button, { backgroundColor: '#cc0000' }]}
-              onPress={() => alert('Incorrect')}
+              onPress={this.isInorrect}
             >
               <Text style={styles.text}>Incorrect</Text>
             </TouchableOpacity>
@@ -77,7 +96,7 @@ class QuizScreen extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: 20,
     flexDirection: 'column',
     marginLeft: 10,
     marginRight: 10,

@@ -13,6 +13,18 @@ const data = {
       {
         question: 'Where do you make Ajax requests in React?',
         answer: 'The componentDidMount lifecycle event'
+      },
+      {
+        question: 'question 3',
+        answer: 'answer 3'
+      },
+      {
+        question: 'question 4',
+        answer: 'answer 4'
+      },
+      {
+        question: 'question 5',
+        answer: 'answer 5'
       }
     ]
   },
@@ -97,10 +109,10 @@ export const removeDeck = async deck => {
 export const initDeck = async () => {
   let decks;
   try {
-    decks = await getDecks();
-    if (!decks) {
-      AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(data));
-    }
+    // decks = await getDecks();
+    // if (!decks) {
+    AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+    // }
   } catch (error) {
     console.tron.logImportant(error);
   }
