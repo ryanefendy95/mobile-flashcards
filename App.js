@@ -15,24 +15,6 @@ export default class App extends Component {
     setLocalNotification();
   }
 
-  render() {
-    if (!this.state.isLoadingComplete && !this.props.skipLoadingScreen) {
-      return (
-        <AppLoading
-          startAsync={this._loadResourcesAsync}
-          onError={this._handleLoadingError}
-          onFinish={this._handleFinishLoading}
-        />
-      );
-    }
-    return (
-      <View style={styles.container}>
-        {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
-        <AppNavigator />
-      </View>
-    );
-  }
-
   _loadResourcesAsync = async () =>
     Promise.all([
       Asset.loadAsync([
@@ -57,6 +39,24 @@ export default class App extends Component {
   _handleFinishLoading = () => {
     this.setState({ isLoadingComplete: true });
   };
+
+  render() {
+    if (!this.state.isLoadingComplete && !this.props.skipLoadingScreen) {
+      return (
+        <AppLoading
+          startAsync={this._loadResourcesAsync}
+          onError={this._handleLoadingError}
+          onFinish={this._handleFinishLoading}
+        />
+      );
+    }
+    return (
+      <View style={styles.container}>
+        {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
+        <AppNavigator />
+      </View>
+    );
+  }
 }
 
 const styles = StyleSheet.create({

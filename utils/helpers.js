@@ -35,9 +35,10 @@ export const setLocalNotification = () => {
             Notifications.cancelAllScheduledNotificationsAsync(); // clear all notification just in case so we don't set two
             // create a date object represent tomorrow 8 pm
             const tomorrow = new Date();
-            tomorrow.setDate(tomorrow.getDate() + 1);
-            tomorrow.setHours(20);
-            tomorrow.setMinutes(0);
+            // tomorrow.setDate(tomorrow.getDate() + 1);
+            // tomorrow.setHours(20);
+            // tomorrow.setMinutes(tomorrow.getMinutes() + 1);
+            tomorrow.setSeconds(tomorrow.getSeconds() + 5);
             // notification obj, when to go off
             Notifications.scheduleLocalNotificationAsync(createNotification(), {
               time: tomorrow,
