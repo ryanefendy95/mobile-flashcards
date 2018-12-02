@@ -74,8 +74,8 @@
   - [x] When the score is displayed, buttons are displayed to either start the quiz over or go back to the Individual Deck view.
   - [x] Both the 'Restart Quiz' and 'Back to Deck' buttons route correctly to their respective views.
 - [x] Does the New Deck view work correctly?
-- [ ] Does the user receive a notification at a particular time if they haven't studied that day?
-- [ ] Does the user receive a notification at a particular time if they haven't studiDoes the app function correctly in either Android or iOS?
+- [x] Does the user receive a notification at a particular time if they haven't studied that day?
+- [x] Does the app function correctly in either Android or iOS?
 - [ ] Is the code well written and reasonably structured?
 - [ ] Does the code run without errors? Is the code free of warnings?
 

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 import { Container, H1, H3 } from 'native-base';
 import { getDeck } from '../utils/storage';
+import { clearLocalNotification, setLocalNotification } from '../utils/helpers';
 
 class QuizScreen extends Component {
   static navigationOptions = {
@@ -49,6 +50,8 @@ class QuizScreen extends Component {
 
     // no more questions
     if (this.state.questionNum >= this.state.deck.questions.length) {
+      // once user completed a quiz, reset local notif & set one for tomorrow
+      clearLocalNotification().then(setLocalNotification);
       return (
         <Container>
           <View style={styles.container}>
