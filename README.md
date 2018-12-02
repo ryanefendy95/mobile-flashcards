@@ -49,7 +49,7 @@
 - [x] The front of the card should display the question.
 - [x] The back of the card should display the answer.
 - [x] Users should be able to quiz themselves on a specific deck and receive a score once they're done.
-- [ ] Users should receive a notification to remind themselves to study if they haven't already for that day.
+- [x] Users should receive a notification to remind themselves to study if they haven't already for that day.
 
 ## More Specification
 
