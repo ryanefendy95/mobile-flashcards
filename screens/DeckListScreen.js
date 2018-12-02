@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet } from 'react-native';
-import { Container, Body, Content, List, ListItem, Text, Left, Right, H3 } from 'native-base';
+import { Container, Body, Content, List, ListItem, Text, Right, H3 } from 'native-base';
 import { Ionicons } from '@expo/vector-icons';
 import { initDeck, getDecks } from '../utils/storage';
 
@@ -31,6 +31,33 @@ class DeckListScreen extends Component {
     const decks = await getDecks();
     this.setState({ decks });
   }
+
+  // async obtainNotificationPermission() {
+  //   let permission = await Permissions.getAsync(Permissions.USER_FACING_NOTIFICATIONS);
+  //   if (permission.status !== 'granted') {
+  //     permission = await Permissions.askAsync(Permissions.USER_FACING_NOTIFICATIONS);
+  //     if (permission.status !== 'granted') {
+  //       Alert.alert('Permission not granted to show notifications');
+  //     }
+  //   }
+  //   return permission;
+  // }
+
+  // async presentLocalNotification(date) {
+  //   await this.obtainNotificationPermission();
+  //   Notifications.presentLocalNotificationAsync({
+  //     title: 'Your Reservation',
+  //     body: `Reservation for ${date} requested`,
+  //     ios: {
+  //       sound: true
+  //     },
+  //     android: {
+  //       sound: true,
+  //       vibrate: true,
+  //       color: '#512DA8'
+  //     }
+  //   });
+  // }
 
   render() {
     return (
