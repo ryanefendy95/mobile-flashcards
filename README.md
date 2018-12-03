@@ -7,7 +7,7 @@ Mobile Flashcards is a mobile app that let users to study collections of flashca
 Alternatively, feel free to use `npm` instead of `yarn`
 
 ```sh
-$ git clone hhttps://github.com/ryanefendy95/mobile-flashcards.git
+$ git clone https://github.com/ryanefendy95/mobile-flashcards.git
 $ cd mobile-flashcards
 $ yarn install
 $ yarn start
