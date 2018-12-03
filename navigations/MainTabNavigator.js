@@ -9,7 +9,10 @@ import DeckScreen from '../screens/DeckScreen';
 import NewQuestionScreen from '../screens/NewQuestionScreen';
 import QuizScreen from '../screens/QuizScreen';
 
+import SwipeScreen from '../screens/SwipScreen';
+
 const DeckListStack = createStackNavigator({
+  Swipe: SwipeScreen,
   DeckList: DeckListScreen,
   Deck: DeckScreen,
   NewQuestion: NewQuestionScreen, // add card
